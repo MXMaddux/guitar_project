@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitar Gazing</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="d-flex justify-content-around align-items-center col-12">
+            <a href="/dashboard" class="btn btn-info">Dashboard</a>
+            <a href="/logout" class="btn btn-info">Logout</a>
+        </nav>
+        <div class="col-5 mx-auto container-fluid bg-dark text-light text-center">
+            <h2>Acoustic Guitar facts:</h2>
+            <img src="../static/img/guitars_project/acoustic.webp" alt="acoustic guitar">
+            <p>Acoustic guitars made of wood must be kept in ideal temperature and humidity.</p>
+            <p>Ideal humidity should be 40-55% and ideal temperatures between 70-75 degrees.</p>
+            <form action="/get_weather" method="post">
+                <div class="mb-3">
+                    <h3>See conditions in your area</h3>
+                    <label for="exampleInputEmail1" class="form-label">Zipcode</label>
+                    <input type="text" class="form-control col-4 mx-auto" name="zipcode">
+                    
+                  </div>
+                  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </form>
+            <table class="table table-responsive fixed-table-body text-warning align-center mt-3 ml-5">
+                <thead>
+                    <tr>
+                        <th>City Name</th>
+                        <th>Temperature</th>
+                        <th>Humidity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{session['name']}}</td>
+                        <td>{{session['temperature']}}</td>
+                        <td>{{session['humidity']}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Carbon Fiber Guitars Can be stored however the hell you want.</h2>
+            <p>They just tend to be more expensive for comparable quality.</p>
+            <img src="../static/img/guitars_project/acoustic_cf.webp" alt="">
+        </div>
+        
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+Website for people with GAS (Guitar Acquisition Syndrome) to help select the best guitar for them to purchase.
+
+- login and registration
+- dashboard page that lists guitars user owns and let's you view or delete them
+- a page with a form where user inputs answers to questions that determine the best guitar for their next purchase
+- a page for users who prefer acoustic guitars with ideal temeratures and humidity for acoustics with a weather API to show tem and humidity where you live
+- a page where users can message each other
+- a page to view selected guitar details, photo, price with option to buy or reject
