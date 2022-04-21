@@ -1,6 +1,6 @@
 from flask_app import app
 
-from flask_app.controllers import messages, users
+from flask_app.controllers import messages, users, guitars
 
 if __name__=="__main__":
     app.run(debug=True)
