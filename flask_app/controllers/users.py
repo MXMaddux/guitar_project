@@ -65,18 +65,6 @@ def dashboard():
     return render_template("dashboard.html", user=user, owner=owner, guitars=guitars)
 
 
-@app.route("/msg_dashboard")
-def msg_dashboard():
-    if 'user_id' not in session:
-        return redirect('/')
-    data = {
-        "id": session['user_id']
-    }
-    user = User.get_one(data)
-    messages = Message.get_user_messages(data)
-    users = User.get_all(data)
-    return render_template("msg_dashboard.html", user=user, users=users, messages=messages)
-
 
 @app.route('/logout')
 def logout():

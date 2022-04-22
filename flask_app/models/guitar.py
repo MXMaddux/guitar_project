@@ -38,14 +38,6 @@ class Guitar:
             guitars.append(cls(row))
         return guitars
 
-    # @classmethod
-    # def update(cls, data):
-    #     query = """
-    #             UPDATE guitars SET make=%(make)s, model=%(model)s, price=%(price)s, color=%(color)s,
-    #             orientation=%(orientation)s, image=%(image)s,updated_at=NOW() WHERE id = %(id)s;
-    #             """
-    #     return connectToMySQL(db).query_db(query, data)
-
     @classmethod
     def destroy(cls, data):
         query = """

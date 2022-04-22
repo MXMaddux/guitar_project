@@ -8,8 +8,8 @@ from flask_app.models.user import User
 from flask_app.models.message import Message
 from flask_app.models.guitar import Guitar
 
-app = Flask(__name__)
-app.secret_key = "mykey"
+# app = Flask(__name__)
+# app.secret_key = "mykey"
 
 @app.route('/acoustic')
 def acoustic():

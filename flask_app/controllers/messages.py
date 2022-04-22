@@ -1,8 +1,21 @@
+from flask import render_template, session,flash,redirect, request
+import re
 from flask_bcrypt import Bcrypt
 from flask_app import app
 from flask_app.models.user import User
 from flask_app.models.message import Message
-from flask import redirect,request,session
+
+@app.route("/msg_dashboard")
+def msg_dashboard():
+    if 'user_id' not in session:
+        return redirect('/')
+    data = {
+        "id": session['user_id']
+    }
+    user = User.get_one(data)
+    messages = Message.get_user_messages(data)
+    users = User.get_all()
+    return render_template("msg_dashboard.html", user=user, users=users, messages=messages)
 
 @app.route('/post_message',methods=['POST'])
 def post_message():
