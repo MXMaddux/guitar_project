@@ -17,6 +17,7 @@ class Guitar:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
+
     @classmethod
     def save(cls, data):
         query = """INSERT INTO guitars (make,model,price,color,orientation,image,user_id)
@@ -45,19 +46,23 @@ class Guitar:
                 """
         return connectToMySQL(db).query_db(query, data)
 
+    # @staticmethod
+    # def buy():
+
+
     @staticmethod
-    def validate(guitar):
+    def is_valid(guitar):
         is_valid = True
-        if guitar['music_style'] == "":
+        if guitar['music_style'] == "0":
             flash("Please select a music style", "guitar")
             is_valid = False
-        if guitar['budget'] == "":
+        if guitar['budget'] == "0":
             flash("Please select a budget", "guitar")
             is_valid = False
-        if guitar['looks'] == "":
+        if guitar['looks'] == "0":
             flash("Please select looks", "guitar")
             is_valid = False
-        if guitar['orientation'] == "":
+        if guitar['orientation'] == "0":
             flash("Please select orientatiom", "guitar")
             is_valid = False
         return is_valid

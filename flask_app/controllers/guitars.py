@@ -1,15 +1,16 @@
-from flask import Flask, render_template, session, redirect, request, flash
+from flask import Flask, render_template, session, redirect, request, flash,url_for
 import re
 import os
 import requests
 from flask_bcrypt import Bcrypt
 from flask_app import app
+# from flask_wtf import FlaskForm
+from wtforms import (SelectField, SubmitField)
+from wtforms.validators import DataRequired
 from flask_app.models.user import User
 from flask_app.models.message import Message
 from flask_app.models.guitar import Guitar
 
-# app = Flask(__name__)
-# app.secret_key = "mykey"
 
 @app.route('/acoustic')
 def acoustic():
@@ -30,6 +31,7 @@ def get_weather():
 
     return redirect("/acoustic")
 
+
 @app.route("/new/guitar")
 def new_guitar():
     if "user_id" not in session:
@@ -48,13 +50,21 @@ def destroy(id):
     Guitar.destroy(data)
     return redirect("/dashboard")
 
+# @app.route("/purchase/guitar/<int:id>")
+# def purchase(id):
+#     data = {
+#         "id":id
+#     }
+
+
+
 @app.route("/create/guitar", methods=['POST'])
 def create():
     if "user_id" not in session:
         return redirect("/logout")
-    if not Guitar.validate(request.form):
-        return redirect("/create/guitar")
-    if request.form['music_style'] == '1' and request.form['budget'] == '3' and request.form['looks'] == '1' and request.form['orientation'] == '1':   
+    # if not Guitar.is_valid(request.form):
+    #     return redirect("/create/guitar")
+    if request.form['music_style'] == '1' and request.form['budget'] == '3' and request.form['looks'] == '1' and request.form['orientation'] == '1':
         data = {
             "make": "Fender",
             "model": "Stratocaster",
@@ -234,7 +244,7 @@ def create():
         }
         Guitar.save(data)
         return redirect("/dashboard")
-    if request.form['music_style'] == '2'and request.form['budget'] == '3' and request.form['looks'] == '2' and request.form['orientation'] == '1':
+    if request.form['music_style'] == '2' and request.form['budget'] == '3' and request.form['looks'] == '2' and request.form['orientation'] == '1':
         data = {
             "make": "Fender",
             "model": "Telecaster",
@@ -773,7 +783,7 @@ def create():
         }
         Guitar.save(data)
         return redirect("/dashboard")
-    
+
     if request.form['music_style'] == '6' and request.form['budget'] == '2' and request.form['looks'] == '2' and request.form['orientation'] == '1':
         data = {
             "make": "Ibanez",
@@ -1494,7 +1504,8 @@ def create():
         }
         Guitar.save(data)
         return redirect("/dashboard")
-    return redirect("/dashboard")
+    return redirect("/new/guitar")
+
 
 @app.route("/guitar/<int:id>")
 def show_guitar(id):
@@ -1508,23 +1519,3 @@ def show_guitar(id):
     }
     return render_template("show_guitar.html", user=User.get_one(user_data), guitar=Guitar.get_one(data))
 
-
-# @app.route("/guitar/1")
-# def show_guitar_1(id):
-#     if "user_id" not in session:
-#         return redirect("/logout")
-#     # data = {
-#     #     "id": id
-#     # }
-#     user_data = {
-#         "id": session['user_id']
-#     }
-#     return render_template(f"show_guitar_{id}.html", user = User.get_one(user_data))
-
-# @app.route("/destroy/guitar/<int:id>")
-# def destroy(id):
-#     data = {
-#         "id": id
-#     }
-#     Guitar.destroy(data)
-#     return redirect("/dashboard")

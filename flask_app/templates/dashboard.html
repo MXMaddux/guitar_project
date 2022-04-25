@@ -9,14 +9,14 @@
 </head>
 <body>
     <nav class="d-flex justify-content-around align-items-center col-12">
-        <h1 class="text-center">Welcome {{user.first_name}}</h1>
+        <h1 class="text-center">Welcome {{user.first_name}}!</h1>
         <a href="/new/guitar" class="btn btn-info">Best electric axe for YOU</a>
         <a href="/acoustic" class="btn btn-info">Nah, I prefer acoustic</a>
         <a href="/msg_dashboard" class="btn btn-info">GAS messages</a>
         <a href="/logout" class="btn btn-info">Logout</a>
     </nav>
     <div class="col-8 mx-auto">
-        <h2>Here are the symptoms of your GAS</h2>
+        <h2>Here are the guitars you should add to your collection.</h2>
         <table class="table table-hover table-dark table-striped">
             <thead>
                 <tr>
@@ -40,8 +40,8 @@
                     <td>{{guitar.orientation}}</td>
                     
                     <td>
-                        <a class="text-info" href="/guitar/{{guitar.id}}">View</a>
-                        <a class="text-danger" href="/destroy/guitar/{{guitar.id}}">Delete</a>
+                        <a class="btn btn-outline btn-light mr-3" href="/guitar/{{guitar.id}}">View</a>
+                        <a class="btn btn-outline btn-secondary" href="/destroy/guitar/{{guitar.id}}">Delete</a>
                     </td>
                 </tr>
                 
@@ -51,4 +51,11 @@
         </table>
     </div>
 </body>
+<style>
+    body {
+        background-color: #212121;
+        color: #fff;
+    }
+</style>
+<script src="script.js"></script>
 </html>

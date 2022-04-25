@@ -28,7 +28,7 @@ def post_message():
         "content": request.form['content']
     }
     Message.save(data)
-    return redirect('/dashboard')
+    return redirect('/msg_dashboard')
 
 @app.route('/destroy/message/<int:id>')
 def destroy_message(id):
@@ -36,4 +36,4 @@ def destroy_message(id):
         "id": id
     }
     Message.destroy(data)
-    return redirect('/dashboard')
+    return redirect('/msg_dashboard')

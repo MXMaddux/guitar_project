@@ -21,60 +21,65 @@
 
     </nav>
     <div class="container-fluid">
-    <form action="/create/guitar" method="post" class="col-4 p-4 my-4 bg-dark text-light mx-auto">
-        <h2 class="text-primary">Find your next guitar!</h2>
-        {% with messages = get_flashed_messages(category_filter=['guitar']) %}
-        {% if messages %}
-        {% for message in messages %}
-        <p class="text-warning">{{message}}</p>
-        {% endfor %}
-        < {% endif %} {%endwith%}
-        <div class="d-flex justify-content-between col-9">
-            <div class="col-4">
-                <div class="form-group">
-                    <select class="form-select" for="music_style" name="music_style">
-                        <option selected>Musical style you play most</option>
-                        <option for="1" value="1">Blues</option>
-                        <option for="2" value="2">Country</option>
-                        <option for="3"value="3">Jazz</option>
-                        <option for="4" value="4">Reggae</option>
-                        <option for="5" value="5">Rock</option>
-                        <option for="6" value="6">Metal</option>
-                        <option for="7" value="7">Funk</option>
-                        <option for="8" value="8">Indie</option>
-                        <option for="9" value="9">Punk</option>
-                        <option for="10" value="10">Rockabilly</option>
-                      </select>
+        <form action="/create/guitar" method="post" class="col-4 p-4 my-4 bg-dark text-light mx-auto">
+            <h2 class="text-primary">Find your next guitar!</h2>
+            {% with messages = get_flashed_messages(category_filter=['guitar']) %}
+            {% if messages %}
+            {% for message in messages %}
+            <p class="text-warning">{{message}}</p>
+            {% endfor %}
+            < {% endif %} {%endwith%} <div class="d-flex justify-content-between col-9">
+                <div class="col-4">
+                    <div class="form-group">
+                        <select class="form-select" for="music_style" name="music_style" required>
+                            <option for="0" selected>Musical style you play most</option>
+                            <option for="1" value="1">Blues</option>
+                            <option for="2" value="2">Country</option>
+                            <option for="3" value="3">Jazz</option>
+                            <option for="4" value="4">Reggae</option>
+                            <option for="5" value="5">Rock</option>
+                            <option for="6" value="6">Metal</option>
+                            <option for="7" value="7">Funk</option>
+                            <option for="8" value="8">Indie</option>
+                            <option for="9" value="9">Punk</option>
+                            <option for="10" value="10">Rockabilly</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-select" for="budget" name="budget" required>
+                            <option for="0" selected>Budget</option>
+                            <option for="1" value="1">Superstar</option>
+                            <option for="2" value="2">Stud</option>
+                            <option for="3" value="3">Starving Artist</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-select" for="looks" name="looks" required>
+                            <option for="0" selected>Looks of guitar</option>
+                            <option for="1" value="1">Plain Jane</option>
+                            <option for="2" value="2">Flashy Cathy</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-select" for="orientation" name="orientation" required>
+                            <option for="0" selected>Orientation</option>
+                            <option for="1" value="1">Right Handed</option>
+                            <option for="2" value="2">Left Handed</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Find Guitar" class="btn btn-primary">
                 </div>
-                <div class="form-group">
-                    <select class="form-select" for="budget" name="budget">
-                        <option selected>Budget</option>
-                        <option for="1" value="1">Superstar</option>
-                        <option for="2" value="2">Stud</option>
-                        <option for="3" value="3">Starving Artist</option>
-                      </select>
-                </div>
-                <div class="form-group">
-                    <select class="form-select" for="looks" name="looks">
-                        <option selected>Looks of guitar</option>
-                        <option for="1" value="1">Plain Jane</option>
-                        <option for="2" value="2">Flashy Cathy</option>
-                      </select>
-                </div>
-                <div class="form-group">
-                    <select class="form-select" for="orientation" name="orientation">
-                        <option selected>Orientation</option>
-                        <option for="1" value="1">Right Handed</option>
-                        <option for="2" value="2">Left Handed</option>
-                      </select>
-                </div>
-                <input type="submit" value="Find Guitar" class="btn btn-primary">
-            </div>
-            
-            </div>
-            </div>
+
+    </div>
+    </div>
     </form>
-</div>
+    </div>
 </body>
+<style>
+    body {
+        background-color: #212121;
+        color: #fff;
+    }
+</style>
 
 </html>
