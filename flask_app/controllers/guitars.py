@@ -4,9 +4,6 @@ import os
 import requests
 from flask_bcrypt import Bcrypt
 from flask_app import app
-# from flask_wtf import FlaskForm
-from wtforms import (SelectField, SubmitField)
-from wtforms.validators import DataRequired
 from flask_app.models.user import User
 from flask_app.models.message import Message
 from flask_app.models.guitar import Guitar
@@ -24,8 +21,7 @@ def get_weather():
     url = f"https://api.openweathermap.org/data/2.5/weather?zip={zipcode},us&appid={headers}"
     response = requests.get(url)
     print(response)
-    session['temperature'] = int(
-        (response.json()['main']['temp']) - 273.15) * 9 / 5 + 32
+    session['temperature'] = int((response.json()['main']['temp']) - 273.15) * 9 / 5 + 32
     session['humidity'] = response.json()['main']['humidity']
     session['name'] = response.json()['name']
 
