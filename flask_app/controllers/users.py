@@ -14,7 +14,7 @@ bcrypt = Bcrypt(app)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    if not User.is_valid(request.form):
+    if not User.validate_user(request.form):
         return redirect("/")
     data = {
         "first_name": request.form["first_name"],
